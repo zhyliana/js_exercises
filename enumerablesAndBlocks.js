@@ -1,9 +1,9 @@
 // multiples
 
-var multiples = function (arr) {
+Array.prototype.multiples = function () {
   var result = [];
 
-  arr.forEach(
+  this.forEach(
     function (el) {
       result.push(el*2);
     }
@@ -12,43 +12,46 @@ var multiples = function (arr) {
   return result;
 };
 
-// console.log(multiples([1,2,3]))
+// console.log([1,2,3].multiples())
 
 //myEach
 
-var myEach = function (arr, func) {
-  for (var i = 0; i < arr.length; i++){
-    func(arr[i]);
+Array.prototype.myEach = function (func) {
+  for (var i = 0; i < this.length; i++){
+    func(this[i]);
   }
 }
 
+function boo (a) {
+  return a*2;
+}
 
+[1,2,3].myEach(boo);
 
 //myMap
 
-var myMap = function(arr, func){
+Array.prototype.myMap = function(func){
   var mapped = [];
 
-  myEach(arr, function (a) {
+  this.myEach(function (a) {
     mapped.push(func(a));
   });
 
   return mapped;
 }
 
-function boo (a) {
-  return a;
-}
 
-// console.log(myMap([1,2,3], boo))
+
+// console.log([1,2,3].myMap(boo))
 
 
 //myInject
-var myInject = function (arr, func) {
-  var result = arr[0];
-  var newArray = arr.slice(1);
 
-  myEach(newArray, function (a) {
+Array.prototype.myInject = function (func) {
+  var result = this[0];
+  var newArray = this.slice(1);
+
+  newArray.myEach(function (a) {
     result = func(result, a);
   });
 
@@ -58,4 +61,6 @@ var myInject = function (arr, func) {
 function boo(result, a){
   return (result + a) ;
 }
-console.log(myInject(["add", "2", "raw"], boo))
+//
+// console.log(["add", "2", "raw"].myInject(boo))
+

@@ -1,0 +1,35 @@
+function Student(fname, lname) {
+  this.fname = fname,
+  this.lname = lname,
+  this.name = function() {
+    return (this.fname + " " + this.lname);
+  },
+  this.courseLoad = [],
+  this.enroll = function(course) {
+    if (this.courseLoad.indexOf(course) === -1) {
+      this.courseLoad.push(course);
+      course.students.push(this);
+    }
+  }
+}
+
+function Course(course_name, department, num_credits) {
+  this.name = course_name,
+  this.department = department,
+  this.num_credits = num_credits,
+  this.students = [],
+  this.addStudent = function(student) {
+    if (this.students.indexOf(course) === -1) {
+      this.students.push(student);
+      student.courseLoad.push(this);
+    }
+  }
+}
+
+stud1 = new Student('mary', 'littlelamb');
+course1 = new Course('javascript', 'nedpartment', 1000);
+// console.log(stud1);
+// console.log(course1);
+stud1.enroll(course1);
+// console.log(stud1.courseLoad);
+console.log(course1.students);
