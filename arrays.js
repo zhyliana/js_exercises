@@ -1,22 +1,22 @@
 // dups
-var myUnique = function (arr) {
+Array.prototype.myUnique = function () {
   var uniq = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (uniq.indexOf(arr[i]) < 0) {
-      uniq.push(arr[i]);
+  for (var i = 0; i < this.length; i++) {
+    if (uniq.indexOf(this[i]) < 0) {
+      uniq.push(this[i]);
     }
   }
   return uniq
 }
-//
-// console.log(myUnique([1,2,3,1,2,5,7]))
+
+// console.log([1,2,3,1,2,5,7].myUnique())
 
 // twoSum
-var twoSum = function (arr) {
+Array.prototype.twoSum = function () {
   var results = [];
-  for (var i = 0; i < arr.length; i++) {
-    for (var j = (i + 1); j < arr.length; j++) {
-      if (arr[i] + arr[j] === 0) {
+  for (var i = 0; i < this.length; i++) {
+    for (var j = (i + 1); j < this.length; j++) {
+      if (this[i] + this[j] === 0) {
         results.push([i, j]);
       }
     }
@@ -24,15 +24,15 @@ var twoSum = function (arr) {
   return results
 }
 
-//console.log(twoSum([-1, 0, 2, -2, 1]));
+// console.log([-1, 0, 2, -2, 1].twoSum());
 
 //transpose
-var myTranspose = function(arr) {
+Array.prototype.myTranspose = function() {
   results = [];
-  for (var i = 0; i < arr.length; i++) {
+  for (var i = 0; i < this.length; i++) {
     results.push([])
-    for (var j = 0; j < arr.length; j++) {
-      results[i].push(arr[j][i]);
+    for (var j = 0; j < this.length; j++) {
+      results[i].push(this[j][i]);
     }
   }
   return results;
@@ -44,4 +44,4 @@ rows = [
     [6, 7, 8]
   ];
 
-console.log(myTranspose(rows));
+console.log(rows.myTranspose());
